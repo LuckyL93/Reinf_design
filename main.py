@@ -5,23 +5,28 @@ flag = True
 sezione = []
 
 while flag:
-    risposta = input("creare una nuova sezione? (si/no) ")
+    risposta = input("creare una nuova sezione [numero "+str(i+1)+"] (si/no) ")
     if risposta == "si":
         s = Section()
-        print("DEFINIZIONE DELLA GEOMETRIA")
+        sezione.append(s)
+        print("DEFINIZIONE DELLA GEOMETRIA [SEZIONE NUMERO "+str(i+1)+"]")
         s.askgeo()
-        sezione.append(s.geometria())
-        print("DEFINZIONE DEL TIPO DI CALCESTRUZZO")
+        s.geometria()
+        #sezione.append(s.geometria())
+        print("DEFINZIONE DEL TIPO DI CALCESTRUZZO [SEZIONE NUMERO "+str(i+1)+"]")
         s.askcls()
-        sezione.append(s.calcestruzzo())
-        print("DEFINIZIONE DEL TIPO DI ACCIAIO")
+        s.calcestruzzo()
+        #sezione.append(s.calcestruzzo())
+        print("DEFINIZIONE DEL TIPO DI ACCIAIO [SEZIONE NUMERO "+str(i+1)+"]")
         s.asksteel()
-        sezione.append(s.acciaio())
-        i = + 1
+        s.acciaio()
+        #sezione.append(s.acciaio())
+        i = i + 1
     else:
         flag = False
 
-for n in range(i+1):
-    print(sezione[n].altezza)
-    print(sezione[n].base)
-    print(sezione[n].area)
+
+for n in range(i):
+    print(sezione[n].geometria().area)
+    print(sezione[n].calcestruzzo().fcd)
+    print(sezione[n].acciaio().fyd)
